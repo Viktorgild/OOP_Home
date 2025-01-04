@@ -13,5 +13,3 @@ class Product:
     def __repr__(self):
         return f"'{self.name}', \n{self.description}, \n{self.price}, \n{self.quantity}"
 
-    def __str__(self):
-        return f"{self.name} \n{self.description}, \n{self.price}, \n{self.quantity}"
