@@ -1,3 +1,5 @@
+"""Класс для работы с категориями товаров """
+
 class Category:
     name: str
     description: str
