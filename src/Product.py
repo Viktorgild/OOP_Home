@@ -1,3 +1,6 @@
+"""Класс для работы с товарами"""
+
+
 class Product:
     name: str
     description: str
