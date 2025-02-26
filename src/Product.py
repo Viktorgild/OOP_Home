@@ -18,6 +18,7 @@ class Product:
             description=product_inf["description"],
             quantity=product_inf["quantity"],
         )
+
     @property
     def price(self):
         return self.__price
