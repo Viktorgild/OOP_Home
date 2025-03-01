@@ -13,6 +13,7 @@ python-dotenv = "^1.0.1"
 pytest = "^8.3.3"
 pandas = "^2.2.3"
 logging = "^0.4.9.6"
+product = "^0.1.1.1"
 
 
 [tool.poetry.group.lint.dependencies]
