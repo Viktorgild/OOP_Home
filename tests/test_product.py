@@ -81,4 +81,4 @@ def test_product_price_change_confirmation(Product_test, monkeypatch):
     # Имитация ввода 'y' для подтверждения изменения цены
     monkeypatch.setattr('builtins.input', lambda _: 'y')
     Product_test.price = 150000.0  # Пытаемся понизить цену
-    assert Product_test.price == 150000.0  # Цена должна измениться
+    assert Product_test.price == 150000.0
