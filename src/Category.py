@@ -4,7 +4,7 @@
 class Category:
     name = str
     description = str
-    _products = list  # Приватный атрибут
+    __products = list  # Приватный атрибут
 
     category_count = 0
     product_count = 0
@@ -12,18 +12,18 @@ class Category:
     def __init__(self, name, description, products=None):
         self.name = name
         self.description = description
-        self._products = products if products is not None else []
+        self.__products = products if products is not None else []
 
         Category.category_count += 1
-        Category.product_count += len(self._products)
+        Category.product_count += len(self.__products)
 
     def add_product(self, product):
-        self._products.append(product)
+        self.__products.append(product)
         Category.product_count += 1
 
     def get_product_count(self):
-        return len(self._products)
+        return len(self.__products)
 
     @property
     def products(self):
-        return [f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт." for product in self._products]
+        return [f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт." for product in self.__products]

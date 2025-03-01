@@ -5,25 +5,25 @@ class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self._price = price  # Приватный атрибут
+        self.__price = price  # Приватный атрибут
         self.quantity = quantity
 
     @property
     def price(self):
-        return self._price
+        return self.__price
 
     @price.setter
     def price(self, value):
         if value <= 0:
             raise ValueError("Цена не должна быть нулевая или отрицательная")  # Выбрасываем исключение
-        elif hasattr(self, "_price") and value < self._price:
+        elif hasattr(self, "_price") and value < self.__price:
             confirm = input("Вы уверены, что хотите понизить цену? (y/n): ")
             if confirm.lower() == "y":
-                self._price = value
+                self.__price = value
             else:
                 print("Цена не изменена.")
         else:
-            self._price = value
+            self.__price = value
 
     def __str__(self):
         return self.name  # Возвращаем название товара
