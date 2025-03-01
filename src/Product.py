@@ -1,6 +1,5 @@
 """Класс для работы с товарами"""
 
-
 class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name
@@ -26,7 +25,13 @@ class Product:
             self.__price = value
 
     def __str__(self):
-        return self.name  # Возвращаем название товара
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __repr__(self):
         return f"{self.name}, описание: {self.description}, цена = {self.price}, количество = {self.quantity}"
+
+    def __add__(self, other):
+        if isinstance(other, Product):
+            return (self.price * self.quantity) + (other.price * other.quantity)
+        return NotImplemented
+

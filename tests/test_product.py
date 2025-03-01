@@ -56,10 +56,28 @@ def test_product_price_change_confirmation(Product_test, monkeypatch):
 
     # Имитация ввода 'n' для отмены изменения цены
     monkeypatch.setattr("builtins.input", lambda _: "n")
-    Product_test.price = 150000.0  # Пытаемся понизить цену
-    assert Product_test.price == 150000.0  # Цена не должна измениться
+    old_price = Product_test.price  # Сохраняем старую цену
+    Product_test.price = 200000.0  # Пытаемся понизить цену
+    assert Product_test.price == old_price  # Цена не должна измениться
 
     # Имитация ввода 'y' для подтверждения изменения цены
     monkeypatch.setattr("builtins.input", lambda _: "y")
     Product_test.price = 150000.0  # Пытаемся понизить цену
     assert Product_test.price == 150000.0  # Цена должна измениться
+
+
+def test_product_str(Product_test):
+    """Тестируем строковое отображение продукта."""
+    assert str(Product_test) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+
+
+def test_category_str(Category_test):
+    """Тестируем строковое отображение категории."""
+    assert str(Category_test) == "Смартфоны, количество продуктов: 27 шт."
+
+
+def test_product_addition():
+    """Тестируем сложение продуктов."""
+    product_a = Product("Product A", "Description A", 100, 10)
+    product_b = Product("Product B", "Description B", 200, 2)
+    assert product_a + product_b == 1400  # 100 * 10 + 200 * 2
