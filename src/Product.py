@@ -1,3 +1,6 @@
+"""Класс для работы с товарами"""
+
+
 class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name
