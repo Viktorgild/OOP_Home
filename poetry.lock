@@ -619,6 +619,17 @@ dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
+name = "product"
+version = "0.1.1.1"
+description = ""
+optional = false
+python-versions = "*"
+files = [
+    {file = "product-0.1.1.1-py2-none-any.whl", hash = "sha256:7922ab1b27ec4d5b80fe769b04810ca7855cbf9f3e02646c8b0575379d2a26a9"},
+    {file = "product-0.1.1.1.tar.gz", hash = "sha256:a78873fc640e4de4d47346a05e19f6d4318b66a47b65307cd753d4e514e2ce13"},
+]
+
+[[package]]
 name = "pycodestyle"
 version = "2.12.1"
 description = "Python style guide checker"
@@ -791,4 +802,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "1f761fa21f1298ffa60c7817466ec5184be1744cef163c9cb02f1ea55d0513bf"
+content-hash = "365716d9d8b43311ed4f401764b36db20ccaf9f3f02839d79e80b91b416770b9"
