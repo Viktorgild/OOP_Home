@@ -1,7 +1,7 @@
 import pytest
 
 from src.Category import Category
-from src.Product import Product
+from src.Product import Product, Smartphone, LawnGrass
 
 
 def test_product_creation(Product_test):
@@ -24,7 +24,7 @@ def test_category_creation(Category_test):
 
 def test_add_product_to_category(Category_test):
     """Тестируем добавление продукта в категорию."""
-    new_product = Product("Nokia 3310", "Классический телефон", 5000.0, 10)
+    new_product = Smartphone("Nokia 3310", "Классический телефон", 5000.0, 10, "Low", "3310", "16MB", "Black")
     Category_test.add_product(new_product)
     assert len(Category_test.products) == 4
 
@@ -78,6 +78,63 @@ def test_category_str(Category_test):
 
 def test_product_addition():
     """Тестируем сложение продуктов."""
-    product_a = Product("Product A", "Description A", 100, 10)
-    product_b = Product("Product B", "Description B", 200, 2)
+    product_a = Smartphone("Product A", "Description A", 100, 10, "Low", "A", "16GB", "Black")
+    product_b = Smartphone("Product B", "Description B", 200, 2, "Medium", "B", "32GB", "White")
     assert product_a + product_b == 1400  # 100 * 10 + 200 * 2
+
+
+def test_smartphone_creation():
+    """Тестируем создание смартфона."""
+    smartphone = Smartphone(
+        "Samsung Galaxy S23 Ultra",
+        "256GB, Серый цвет, 200MP камера",
+        180000.0,
+        5,
+        "High",
+        "S23 Ultra",
+        "256GB",
+        "Gray",
+    )
+    assert smartphone.name == "Samsung Galaxy S23 Ultra"
+    assert smartphone.efficiency == "High"
+    assert smartphone.memory == "256GB"
+
+
+def test_lawn_grass_creation():
+    """Тестируем создание травы газонной."""
+    lawn_grass = LawnGrass("Газонная трава", "Трава для газонов", 5000.0, 20, "Россия", "7-14 дней", "Зеленый")
+    assert lawn_grass.name == "Газонная трава"
+    assert lawn_grass.country == "Россия"
+    assert lawn_grass.germination_period == "7-14 дней"
+
+
+def test_add_smartphone_to_category():
+    """Тестируем добавление смартфона в категорию."""
+    category = Category("Смартфоны", "Смартфоны")
+    smartphone = Smartphone(
+        "Samsung Galaxy S23 Ultra",
+        "256GB, Серый цвет, 200MP камера",
+        180000.0,
+        5,
+        "High",
+        "S23 Ultra",
+        "256GB",
+        "Gray",
+    )
+    category.add_product(smartphone)
+    assert len(category.products) == 1
+
+
+def test_add_lawn_grass_to_category():
+    """Тестируем добавление травы газонной в категорию."""
+    category = Category("Трава", "Газонная трава")
+    lawn_grass = LawnGrass("Газонная трава", "Трава для газонов", 5000.0, 20, "Россия", "7-14 дней", "Зеленый")
+    category.add_product(lawn_grass)
+    assert len(category.products) == 1
+
+
+def test_add_invalid_product_to_category():
+    """Тестируем добавление недопустимого продукта в категорию."""
+    category = Category("Смартфоны", "Смартфоны")
+    with pytest.raises(TypeError, match="Можно добавлять только продукты, смартфоны или траву газонную."):
+        category.add_product("Некорректный продукт")  # Строка не является продуктом

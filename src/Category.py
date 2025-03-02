@@ -1,5 +1,8 @@
 """Класс для работы с категориями товаров"""
 
+from src.Product import LawnGrass, Product, Smartphone
+
+
 class Category:
     name = str
     description = str
@@ -17,6 +20,8 @@ class Category:
         Category.product_count += len(self.__products)
 
     def add_product(self, product):
+        if not isinstance(product, (Product, Smartphone, LawnGrass)):
+            raise TypeError("Можно добавлять только продукты, смартфоны или траву газонную.")
         self.__products.append(product)
         Category.product_count += 1
 
