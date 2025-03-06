@@ -1,7 +1,4 @@
-"""Класс для работы с категориями товаров"""
-
 from src.Product import LawnGrass, Product, Smartphone
-
 
 class Category:
     name = str
