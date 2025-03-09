@@ -1,8 +1,16 @@
 from src.BaseProduct import BaseProduct
 
-class Product(BaseProduct):
+class LoggingMixin:
+    def __init__(self, *args, **kwargs):
+        class_name = self.__class__.__name__
+        params = ', '.join(repr(arg) for arg in args)
+        params += ', ' + ', '.join(f"{k}={v!r}" for k, v in kwargs.items())
+        print(f"Создан объект класса {class_name} с параметрами: {params}")
+
+class Product(BaseProduct, LoggingMixin):
     def __init__(self, name, description, price, quantity):
-        super().__init__(name, description, price, quantity)
+        LoggingMixin.__init__(self, name, description, price, quantity)  # Вызов конструктора миксина
+        super().__init__(name, description, price, quantity)  # Вызов конструктора базового класса
         self.__price = price  # Приватный атрибут
 
     @property
