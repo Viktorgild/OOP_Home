@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseOrder(ABC):
     @abstractmethod
     def __init__(self, product, quantity):
@@ -9,6 +10,7 @@ class BaseOrder(ABC):
     @abstractmethod
     def total_price(self):
         pass
+
 
 class Order(BaseOrder):
     def __init__(self, product, quantity):

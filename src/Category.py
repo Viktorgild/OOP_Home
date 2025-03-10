@@ -1,9 +1,10 @@
 from src.Product import LawnGrass, Product, Smartphone
 
+
 class Category:
-    name = str
-    description = str
-    __products = list  # Приватный атрибут
+    name: str
+    description: str
+    __products: list  # Приватный атрибут
 
     category_count = 0
     product_count = 0
@@ -28,6 +29,13 @@ class Category:
     @property
     def products(self):
         return [str(product) for product in self.__products]
+
+    def average_price(self):
+        try:
+            total_price = sum(product.price for product in self.__products)
+            return total_price / len(self.__products)
+        except ZeroDivisionError:
+            return 0
 
     def __str__(self):
         total_quantity = sum(product.quantity for product in self.__products)
