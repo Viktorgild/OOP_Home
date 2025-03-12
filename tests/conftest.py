@@ -12,7 +12,7 @@ product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
 def reset_category_count():
     """Сбрасываем счетчик категорий и продуктов перед каждым тестом."""
     Category.category_count = 0
-    Category.product_count = 0  # Сбрасываем счетчик продуктов
+    Category.product_count = 0  ## Сбрасываем счетчик продуктов
     yield
     Category.category_count = 0  # Сбрасываем после теста
     Category.product_count = 0  # Сбрасываем после теста
