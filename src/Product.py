@@ -13,19 +13,22 @@ class Product(BaseProduct, LoggingMixin):
     def __init__(self, name, description, price, quantity):
         if quantity <= 0:
             raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        if price <= 0:  # Проверка на отрицательную цену
+            raise ValueError("Цена не должна быть нулевая или отрицательная")
+
         LoggingMixin.__init__(self, name, description, price, quantity)  # Вызов конструктора миксина
         super().__init__(name, description, price, quantity)  # Вызов конструктора базового класса
-        self.__price = price  # Приватный атрибут
+        self._price = price  # Приватный атрибут
 
     @property
     def price(self):
-        return self.__price
+        return self._price
 
     @price.setter
     def price(self, value):
         if value <= 0:
             raise ValueError("Цена не должна быть нулевая или отрицательная")
-        self.__price = value
+        self._price = value
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
