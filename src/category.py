@@ -1,4 +1,4 @@
-from src.Product import LawnGrass, Product, Smartphone
+from src.product import LawnGrass, Product, Smartphone
 
 
 class Category:

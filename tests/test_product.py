@@ -3,10 +3,10 @@ import unittest
 from unittest.mock import patch
 from io import StringIO
 
-from src.Category import Category
-from src.Order import Order
-from src.Product import LawnGrass, Product, Smartphone
-from src.Mixin import LoggingMixin  # Убедитесь, что вы импортируете Mixin
+from src.category import Category
+from src.order import Order
+from src.product import LawnGrass, Product, Smartphone
+from src.mixin import LoggingMixin  # Убедитесь, что вы импортируете Mixin
 
 def test_product_creation(Product_test):
     """Тестируем создание продукта."""

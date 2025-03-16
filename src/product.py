@@ -1,4 +1,4 @@
-from src.BaseProduct import BaseProduct
+from src.base_product import BaseProduct
 
 
 class LoggingMixin:
